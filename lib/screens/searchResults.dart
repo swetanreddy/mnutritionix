@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mnutritionix/models/item.dart';
 import 'package:mnutritionix/models/itemAPI.dart';
+import 'package:mnutritionix/screens/calculate.dart';
 import 'package:mnutritionix/screens/drawer.dart';
 
 class SearchResults extends StatefulWidget {
@@ -16,7 +17,7 @@ class _SearchResultsState extends State<SearchResults> {
   late List<item> _items;
   bool _isLoading = true;
 
-  Future<List<item>> getItems(name) async {
+  Future<List> getItems(name) async {
     _items = await itemAPI.getItem(name);
     setState(() {
       _isLoading = false;
@@ -27,9 +28,7 @@ class _SearchResultsState extends State<SearchResults> {
     print(widget.Name);
     return _items;
   }
-
   late Future<void> items;
-
 
   @override
   void initState() {
@@ -53,17 +52,45 @@ class _SearchResultsState extends State<SearchResults> {
         title: Text(widget.Name.toUpperCase()),
       ),
       endDrawer: mainDrawer(),
-      body: FutureBuilder<void>(
+      body: _isLoading ? const Center(child: CircularProgressIndicator()) : FutureBuilder<void>(
         future: items,
         builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
           return ListView.builder(
             itemCount: _items.length,
             itemBuilder: (BuildContext context, int index) {
-              return const ListTile(
-                title: Text('_items[index].brandName'),
-                subtitle: Text('A sufficiently long subtitle warrants three lines.'),
-                trailing: Icon(Icons.more_vert),
-                isThreeLine: true,
+              return _items.length == null ? const Text("No results found") : Card(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    ListTile(
+                      title: Text(_items[index].brandName),
+                      subtitle: Text(_items[index].itemName),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Text("Serving size = " + _items[index].servingWeightGrams.toString()),
+                        TextButton(
+                          child: const Text('Calculate'),
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (_) => Calculate(
+                                    itemName: _items[index].itemName.toString(),
+                                    brandName: _items[index].brandName.toString(),
+                                    servingWeightGrams: _items[index].servingWeightGrams.toString(),
+                                    calories: _items[index].calories.toString(),
+                                    totalFat: _items[index].totalFat.toString(),
+                                    cholestrol: _items[index].cholestrol.toString(),
+                                    sodium: _items[index].sodium.toString(),
+                                    totalCarbohydrates: _items[index].totalCarbohydrates.toString(),
+                                    protein: _items[index].protein.toString())));
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               );
             },
           );
@@ -72,3 +99,11 @@ class _SearchResultsState extends State<SearchResults> {
     );
   }
 }
+
+
+
+
+
+
+
+

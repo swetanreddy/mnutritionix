@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mnutritionix/models/item.dart';
-import 'package:mnutritionix/models/itemAPI.dart';
 import 'package:mnutritionix/screens/drawer.dart';
 import 'package:mnutritionix/screens/searchResults.dart';
 
