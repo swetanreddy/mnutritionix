@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "726112439514",
+    "firebase_url": "https://iamrich-5735a.firebaseio.com",
+    "project_id": "iamrich-5735a",
+    "storage_bucket": "iamrich-5735a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:726112439514:android:a4faf48de3dad4b09069e3",
+        "android_client_info": {
+          "package_name": "com.example.mnutritionix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "726112439514-ic088o0ici9so0n2qfjpqth8sjltd9cm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mnutritionix",
+            "certificate_hash": "c9a2e83904c6aace725ecd68e4d9455ec886145e"
+          }
+        },
+        {
+          "client_id": "726112439514-tt0u01trvlaeuu9g4jahqkjm2oakjhh7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxzmHpfsF7g6GkNMILV_feZTmglEbpFRY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "726112439514-tt0u01trvlaeuu9g4jahqkjm2oakjhh7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
