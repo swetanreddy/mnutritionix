@@ -4,7 +4,7 @@ class item{
   final servingWeightGrams;
   final calories;
   final totalFat;
-  final cholestrol;
+  final cholesterol;
   final sodium;
   final totalCarbohydrates;
   final protein;
@@ -15,10 +15,10 @@ class item{
     required this.servingWeightGrams,
     required this.calories,
     required this.totalFat,
-    required this.cholestrol,
+    required this.cholesterol,
     required this.sodium,
     required this.totalCarbohydrates,
-    required this.protein
+    required this.protein,
   });
 
   factory item.fromJson(dynamic json) {
@@ -28,7 +28,7 @@ class item{
       servingWeightGrams: json["nf_serving_weight_grams"],
       calories: json["nf_calories"],
       totalFat: json["nf_total_fat"],
-      cholestrol: json["nf_cholesterol"],
+      cholesterol: json["nf_cholesterol"],
       sodium: json["nf_sodium"],
       totalCarbohydrates: json["nf_total_carbohydrate"],
       protein: json["nf_protein"],
